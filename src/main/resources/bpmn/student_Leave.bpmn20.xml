@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef">
+  <process id="student_Leave" name="student_Leave" isExecutable="true">
+    <documentation>学生请假流程图</documentation>
+    <startEvent id="startEvent1"></startEvent>
+    <endEvent id="sid-4F205630-39F1-45C4-8E88-B31AA8EF6CBE"></endEvent>
+    <userTask id="sid-9E3AD05F-B3D1-40C8-B222-B98B0DC4392B" name="任课老师批准" activiti:assignee="teacher" activiti:candidateGroups="teacher1,teacher2,teacher3">
+      <extensionElements>
+        <modeler:initiator-can-complete xmlns:modeler="http://activiti.com/modeler"><![CDATA[false]]></modeler:initiator-can-complete>
+      </extensionElements>
+    </userTask>
+    <userTask id="sid-616809F6-B1C4-4DC9-9504-823B64014090" name="班主任批准" activiti:assignee="bzr">
+      <extensionElements>
+        <modeler:initiator-can-complete xmlns:modeler="http://activiti.com/modeler"><![CDATA[false]]></modeler:initiator-can-complete>
+      </extensionElements>
+    </userTask>
+    <userTask id="sid-8F49F9FC-F9B5-46E2-8096-C3B30683AF61" name="校领导批准" activiti:assignee="xld">
+      <extensionElements>
+        <modeler:initiator-can-complete xmlns:modeler="http://activiti.com/modeler"><![CDATA[false]]></modeler:initiator-can-complete>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="sid-B87EC7D4-C6A0-440D-8971-191C7AC5630D" sourceRef="sid-9E3AD05F-B3D1-40C8-B222-B98B0DC4392B" targetRef="sid-616809F6-B1C4-4DC9-9504-823B64014090"></sequenceFlow>
+    <sequenceFlow id="sid-74D1686D-8BE4-44CC-8600-DE52AC42A417" sourceRef="sid-616809F6-B1C4-4DC9-9504-823B64014090" targetRef="sid-8F49F9FC-F9B5-46E2-8096-C3B30683AF61"></sequenceFlow>
+    <userTask id="sid-ED83D2DF-F989-4A2A-B25F-F30DF31D23C5" name="学生请假" activiti:assignee="student" activiti:candidateGroups="stud1,stud2,stud3">
+      <extensionElements>
+        <modeler:initiator-can-complete xmlns:modeler="http://activiti.com/modeler"><![CDATA[false]]></modeler:initiator-can-complete>
+      </extensionElements>
+    </userTask>
+    <sequenceFlow id="sid-EF4E06B3-0245-4936-953F-32A3B2933002" sourceRef="startEvent1" targetRef="sid-ED83D2DF-F989-4A2A-B25F-F30DF31D23C5"></sequenceFlow>
+    <sequenceFlow id="sid-B2CE4405-2B3F-4C24-9FDB-44FB9E359DB9" sourceRef="sid-ED83D2DF-F989-4A2A-B25F-F30DF31D23C5" targetRef="sid-9E3AD05F-B3D1-40C8-B222-B98B0DC4392B"></sequenceFlow>
+    <sequenceFlow id="sid-46FABF90-46C5-4713-ACFC-8327895F8DAB" sourceRef="sid-8F49F9FC-F9B5-46E2-8096-C3B30683AF61" targetRef="sid-4F205630-39F1-45C4-8E88-B31AA8EF6CBE"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_student_Leave">
+    <bpmndi:BPMNPlane bpmnElement="student_Leave" id="BPMNPlane_student_Leave">
+      <bpmndi:BPMNShape bpmnElement="startEvent1" id="BPMNShape_startEvent1">
+        <omgdc:Bounds height="30.0" width="30.0" x="30.0" y="152.75"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-4F205630-39F1-45C4-8E88-B31AA8EF6CBE" id="BPMNShape_sid-4F205630-39F1-45C4-8E88-B31AA8EF6CBE">
+        <omgdc:Bounds height="28.0" width="28.0" x="870.0" y="153.75"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-9E3AD05F-B3D1-40C8-B222-B98B0DC4392B" id="BPMNShape_sid-9E3AD05F-B3D1-40C8-B222-B98B0DC4392B">
+        <omgdc:Bounds height="80.0" width="100.0" x="300.0" y="127.75"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-616809F6-B1C4-4DC9-9504-823B64014090" id="BPMNShape_sid-616809F6-B1C4-4DC9-9504-823B64014090">
+        <omgdc:Bounds height="80.0" width="100.0" x="495.0" y="127.75"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-8F49F9FC-F9B5-46E2-8096-C3B30683AF61" id="BPMNShape_sid-8F49F9FC-F9B5-46E2-8096-C3B30683AF61">
+        <omgdc:Bounds height="80.0" width="100.0" x="690.0" y="127.75"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="sid-ED83D2DF-F989-4A2A-B25F-F30DF31D23C5" id="BPMNShape_sid-ED83D2DF-F989-4A2A-B25F-F30DF31D23C5">
+        <omgdc:Bounds height="80.0" width="101.0" x="120.0" y="127.75"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="sid-46FABF90-46C5-4713-ACFC-8327895F8DAB" id="BPMNEdge_sid-46FABF90-46C5-4713-ACFC-8327895F8DAB">
+        <omgdi:waypoint x="790.0" y="167.75"></omgdi:waypoint>
+        <omgdi:waypoint x="870.0" y="167.75"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-B87EC7D4-C6A0-440D-8971-191C7AC5630D" id="BPMNEdge_sid-B87EC7D4-C6A0-440D-8971-191C7AC5630D">
+        <omgdi:waypoint x="400.0" y="167.75"></omgdi:waypoint>
+        <omgdi:waypoint x="495.0" y="167.75"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-74D1686D-8BE4-44CC-8600-DE52AC42A417" id="BPMNEdge_sid-74D1686D-8BE4-44CC-8600-DE52AC42A417">
+        <omgdi:waypoint x="595.0" y="167.75"></omgdi:waypoint>
+        <omgdi:waypoint x="690.0" y="167.75"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-EF4E06B3-0245-4936-953F-32A3B2933002" id="BPMNEdge_sid-EF4E06B3-0245-4936-953F-32A3B2933002">
+        <omgdi:waypoint x="60.0" y="167.75"></omgdi:waypoint>
+        <omgdi:waypoint x="120.0" y="167.75"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="sid-B2CE4405-2B3F-4C24-9FDB-44FB9E359DB9" id="BPMNEdge_sid-B2CE4405-2B3F-4C24-9FDB-44FB9E359DB9">
+        <omgdi:waypoint x="221.0" y="167.75"></omgdi:waypoint>
+        <omgdi:waypoint x="300.0" y="167.75"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

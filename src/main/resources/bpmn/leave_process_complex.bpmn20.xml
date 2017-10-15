@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+  <process id="leave_process_complex" name="leave_process_complex" isExecutable="true">
+    <startEvent id="startevent1" name="Start" activiti:formKey="emp_form">
+      <extensionElements>
+        <activiti:formProperty id="emp_name" name="emp_name" type="string"></activiti:formProperty>
+      </extensionElements>
+    </startEvent>
+    <userTask id="emp_submit" name="员工提交请假申请" activiti:candidateUsers="emp1,emp2,emp3"></userTask>
+    <userTask id="boss_check" name="老板审核" activiti:candidateUsers="boss1,boss2"></userTask>
+    <endEvent id="endevent1" name="End"></endEvent>
+    <sequenceFlow id="flow2" sourceRef="emp_submit" targetRef="boss_check"></sequenceFlow>
+    <sequenceFlow id="flow3" sourceRef="boss_check" targetRef="endevent1"></sequenceFlow>
+    <sequenceFlow id="flow1" sourceRef="startevent1" targetRef="emp_submit"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_leave_process_complex">
+    <bpmndi:BPMNPlane bpmnElement="leave_process_complex" id="BPMNPlane_leave_process_complex">
+      <bpmndi:BPMNShape bpmnElement="startevent1" id="BPMNShape_startevent1">
+        <omgdc:Bounds height="30.0" width="30.0" x="30.0" y="180.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="emp_submit" id="BPMNShape_emp_submit">
+        <omgdc:Bounds height="55.0" width="105.0" x="135.0" y="165.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="boss_check" id="BPMNShape_boss_check">
+        <omgdc:Bounds height="55.0" width="105.0" x="330.0" y="167.5"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="endevent1" id="BPMNShape_endevent1">
+        <omgdc:Bounds height="28.0" width="28.0" x="530.0" y="181.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+        <omgdi:waypoint x="60.0" y="195.0"></omgdi:waypoint>
+        <omgdi:waypoint x="103.0" y="195.0"></omgdi:waypoint>
+        <omgdi:waypoint x="102.5" y="190.0"></omgdi:waypoint>
+        <omgdi:waypoint x="135.0" y="190.9558823529412"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
+        <omgdi:waypoint x="240.0" y="192.5"></omgdi:waypoint>
+        <omgdi:waypoint x="285.0" y="192.5"></omgdi:waypoint>
+        <omgdi:waypoint x="285.0" y="195.0"></omgdi:waypoint>
+        <omgdi:waypoint x="330.0" y="195.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow3" id="BPMNEdge_flow3">
+        <omgdi:waypoint x="435.0" y="195.0"></omgdi:waypoint>
+        <omgdi:waypoint x="530.0" y="195.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

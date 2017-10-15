@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ht.">
+  <resultMap id="dealMap" type="deal">
+      <id property="dealId" column="deal_id"></id>
+      <result property="dealBill" column="deal_bill"></result>
+      <result property="dealPrice" column="deal_price"></result>
+      <result property="dealCreatetime" column="deal_createtime"></result>
+      <association property="plays" javaType="com.ht.pojo.Plays">
+          <id property="playId" column="playid"></id>
+          <result property="playNickname" column="play_nickname"></result>
+      </association>
+      <association property="prop" javaType="com.ht.pojo.Prop">
+          <id property="propId" column="proid"></id>
+          <result property="propName" column="prop_name"></result>
+      </association>
+  </resultMap>
+  <insert id="add" parameterType="com.ht.pojo.Deal">
+      insert into deal(deal_id,deal_bill,play_id,deal_price,prop_id,deal_createtime) values(replace(uuid(),'-',''),#{dealBill},#{playId},#{dealPrice},#{propId},#{dealCreatetime})
+  </insert>
+    <delete id="delete" parameterType="string">
+        delete from deal where deal_id = #{dealId}
+    </delete>
+    <select id="findpagelist"  resultMap="dealMap"  parameterType="string" >
+        select d.deal_id,d.deal_bill,p.play_id as playid,p.play_nickname,d.deal_price,r.prop_id as proid,r.prop_name,d.deal_createtime from deal d,prop r,play p where d.prop_id=r.prop_id and d.play_id=p.play_id and d.play_id=#{playId}
+    </select>
+</mapper>
